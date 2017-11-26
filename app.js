@@ -8,8 +8,9 @@ var User1 = require('./User');
 var session = require('express-session');
 var User = require('mongoose').model('User');
 
-app.engine('html', require('ejs').__express);
-app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 app.get('/', function (req, res) {
   res.render('index');
@@ -31,7 +32,7 @@ app.get('/browse', function (req, res) {
     wo.forEach(function (doc) {
       results.push(doc);
     });
-    res.render('browse');
+    res.render('browse', results);
    });
 });
 
