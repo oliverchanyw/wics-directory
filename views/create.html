@@ -1,0 +1,190 @@
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/style.css">
+<meta name="google-signin-client_id" content="517619158501-4u1dm2gm7kk791p0rjbtkdifd5l2i6j1.apps.googleusercontent.com">
+
+
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">Penn WiCS</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+      <li class="nav-item">
+          <a class="nav-link active" href="/browse">Browse</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">Create Profile</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+      </li>
+	  </ul>
+  </div>
+</nav>
+
+<h1 class="create">Create Profile</h1>
+<a href="/logout">Logout</a>
+
+<div id="root"></div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script src="https://fb.me/react-15.0.0.js"></script>
+<script src="https://fb.me/react-dom-15.0.0.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+	var AlertBox =  React.createClass({
+  render: function(){
+    return(
+      <div className={"alert alert-"+ this.props.type}>{this.props.children}</div>
+    );
+  }
+});
+
+var RegForm = React.createClass({
+  getInitialState: function(){
+    return {
+      showAlert: false
+    }
+  },
+  register: function(e){
+    var firstName = this.name.firstName.value.trim();
+    var lastName = this.name.lastName.value.trim();
+    var email = this.name.email.value.trim();
+    var major = this.name.major.value.trim();
+    var year = this.name.email.value.trim();
+    var schools = [];
+		$.each($("input[name='school']:checked"), function(){
+		schools.push($(this).val());
+		});
+    var hometown = this.name.hometown.value.trim();
+    var coursesTaken = this.name.coursesTaken.value.trim();
+    var coursesCurr = this.name.coursesCurr.value.trim();
+    var involve = this.name.involve.value.trim();
+    var interests = this.name.interests.value.trim();
+    
+    if (!firstName || !lastName || !email || !major || !year || !schools || !hometown || !coursesTaken || !coursesCurr
+    || !involve || !interests) {
+      this.setState({showAlert: true});
+      return;
+    }
+    
+    alert("Thank YOU" + firstName + " " + lastName);
+    this.name.firstName.value = '';
+    this.name.lastName.value = '';
+    this.name.email.value = '';
+    this.name.major.value = '';
+    this.name.year.value = '';
+    this.name.schools = [];
+    this.name.hometown.value = '';
+    this.name.coursesTaken.value = '';
+    this.name.coursesCurr.value = '';
+    this.name.involve.value = '';
+    this.name.interests.value = ''; 
+  	},
+  
+  render: function(){
+  const formStyle = {
+	  width: '75%',
+	  display: 'block',
+	  margin: 'auto',
+	  textAlign: 'center',
+	  letterSpacing: '1.2px',
+	  backgroundColor: '#EFC4BD',
+    color: 'black',
+	  paddingRight: '20px',
+	  paddingTop: '10px',
+	  paddingBottom: '10px',
+	 };
+
+	const labelStyle = {
+		textAlign: 'left',
+		marginLeft: '20px'
+	};
+	const fontStyle = {
+		fontFamily: 'Oswald',
+		textTransform: 'uppercase',
+	};
+  const hr = {
+    marginLeft: '2em',
+    marginRight: '2em',
+    backgroundColor: 'white',
+  }
+    return(
+      <div>
+        <form style={formStyle} onSubmit={this.register} method="post">
+          {this.state.showAlert ? <AlertBox type="danger">Fill it out</AlertBox> : null}
+          <div className="form-group" style={labelStyle}>
+            <label>First Name: </label>
+            <input type="text" className="form-control" placeholder="First Name" name="firstName" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>Last Name: </label>
+            <input type="text" className="form-control" placeholder="Last Name" name="lastName" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>School Email: </label>
+            <input type="email" className="form-control" placeholder="Email" name="email" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>School: </label><br/>
+            <input type="checkbox" name="school" value="Engineering"/> Engineering   
+            <input type="checkbox" name="school" value="Wharton" style={labelStyle}/>     Wharton    
+            <input type="checkbox" name="school" value="Arts & Sciences" style={labelStyle}/>     Arts &amp; Sciences   
+            <input type="checkbox" name="school" value="Nursing" style={labelStyle}/>     Nursing
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>Major: </label>
+            <input type="text" className="form-control" placeholder="Major" name="major" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>Year: </label>
+            <input type="number" className="form-control" placeholder="Year" name="year" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>Hometown: </label>
+            <input type="text" className="form-control" placeholder="Hometown" name="hometown" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>CIS Courses Taken: </label>
+            <input type="text" className="form-control" placeholder="CIS Courses Taken" name="coursesTaken" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>CIS Courses Currently In: </label>
+            <input type="text" className="form-control" placeholder="CIS Courses Currently In" name="coursesCurr" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>Involvement on Campus: </label>
+            <input type="text" className="form-control" placeholder="Involvement on Campus" name="involve" required/>
+          </div>
+          <hr style={hr}/>
+          <div className="form-group" style={labelStyle}>
+            <label>Interests: </label>
+            <input type="text" className="form-control" placeholder="Interests" name="interests" required/>
+          </div>
+          <input type="submit" className="btn btn-secondary btn-lg active" style={fontStyle} value="Submit" />
+        </form>
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(<RegForm />, document.getElementById('root'));
+
+</script>
