@@ -10,11 +10,97 @@ export default class Browse extends React.Component {
   }
   render() {
     var results = []; 
-    for (var i = 0; i < _.size(this.props) - 3; i++) {
-      results.push(<ProfileCard firstName={this.props[i].firstName} lastName={this.props[i].lastName}
-        email={this.props[i].email} major={this.props[i].major} year={this.props[i].year} schools={this.props[i].schools}
-        hometown={this.props[i].hometown} coursesTaken={this.props[i].coursesTaken} coursesCurr={this.props[i].coursesCurr}
-        involve={this.props[i].involve} interests={this.props[i].interests}/>);
+    for (var i = 0; i < _.size(this.props) - 3; i+=2) {
+      if(i + 1 == _.size(this.props) - 3) {
+        results.push(
+          <div>
+            <div class="row">
+              <div class="col-lg-1">
+              </div>
+              <div class="col-lg-4">
+                <ProfileCard firstName={this.props[i].firstName} lastName={this.props[i].lastName}
+            email={this.props[i].email} major={this.props[i].major} year={this.props[i].year} schools={this.props[i].schools}
+            hometown={this.props[i].hometown}/>
+            <p>
+            <div class="col-lg-6">
+              <a class="btn btn-secondary" data-toggle="collapse" href={"#collapseExample"+i} aria-expanded="false" aria-controls="collapseExample">
+                Learn More
+              </a>
+            </div>
+            </p>
+            <div class="collapse" id={"collapseExample"+i}>
+              <div class="card card-block">
+                <strong>Courses Taken</strong>: {this.props[i].coursesTaken}<br/>
+                <strong>Courses Curr</strong>: {this.props[i].coursesCurr}<br/>
+                <strong>Involvement on Campus</strong>: {this.props[i].involve}<br/>
+                <strong>Interests</strong>: {this.props[i].interests}<br/>
+              </div>
+            </div>
+              </div>
+              <div class="col-lg-2">
+              </div>
+              
+              <div class="col-lg-1">
+              </div>
+            </div>
+            <br/>
+          </div>
+        );      
+      } else {
+        results.push(
+          <div>
+            <div class="row">
+              <div class="col-lg-1">
+              </div>
+              <div class="col-lg-4">
+                <ProfileCard firstName={this.props[i].firstName} lastName={this.props[i].lastName}
+            email={this.props[i].email} major={this.props[i].major} year={this.props[i].year} schools={this.props[i].schools}
+            hometown={this.props[i].hometown}/>
+            <p>
+            <div class="col-lg-6">
+              <a class="btn btn-secondary" data-toggle="collapse" href={"#collapseExample"+i} aria-expanded="false" aria-controls="collapseExample">
+                Learn More
+              </a>
+            </div>
+            </p>
+            <div class="collapse" id={"collapseExample"+i}>
+              <div class="card card-block">
+                <strong>Courses Taken: </strong> {this.props[i].coursesTaken}<br/>
+                <strong>Courses Curr: </strong> {this.props[i].coursesCurr}<br/>
+                <strong>Involvement on Campus: </strong> {this.props[i].involve}<br/>
+                <strong>Interests: </strong> {this.props[i].interests}<br/>
+              </div>
+            </div>
+              </div>
+              <div class="col-lg-2">
+              </div>
+              <div class="col-lg-4">
+                <ProfileCard firstName={this.props[i+1].firstName} lastName={this.props[i+1].lastName}
+            email={this.props[i+1].email} major={this.props[i+1].major} year={this.props[i+1].year} schools={this.props[i+1].schools}
+            hometown={this.props[i+1].hometown}/>
+            <p>
+            <div class="col-lg-6">
+              <a class="btn btn-secondary" data-toggle="collapse" href={"#collapseExample"+(i+1)} aria-expanded="false" aria-controls="collapseExample">
+                Learn More
+              </a>
+            </div>
+            </p>
+            <div class="collapse" id={"collapseExample"+(i+1)}>
+              <div class="card card-block">
+                <strong>Courses Taken</strong>: {this.props[i+1].coursesTaken}<br/>
+                <strong>Courses Curr</strong>: {this.props[i+1].coursesCurr}<br/>
+                <strong>Involvement on Campus</strong>: {this.props[i+1].involve}<br/>
+                <strong>Interests</strong>: {this.props[i+1].interests}<br/>
+              </div>
+            </div>
+              </div>
+              <div class="col-lg-1">
+              </div>
+            </div>
+            <br/>
+          </div>
+        );
+      }      
     };
     return (
      <Style>
@@ -103,6 +189,10 @@ export default class Browse extends React.Component {
 
         #description {
           margin-top: -20px;
+        }
+
+        .col-lg-4 {
+          background-color: #EFA499;
         }
        `}
      <div>
