@@ -21,9 +21,6 @@ export default class Browse extends React.Component {
                 <ProfileCard firstName={this.props[i].firstName} lastName={this.props[i].lastName} major={this.props[i].major} 
                 year={this.props[i].year} schools={this.props[i].schools}
             hometown={this.props[i].hometown}/>
-            <div class="col-lg-6">
-              <a href={"mailto:"+this.props[i].email} class="btn btn-secondary btn-lg"><i class="fa fa-google-plus fa-fw"></i>Contact Me</a>
-            </div>
             <p>
             <div class="col-lg-6">
               <a class="btn btn-secondary" data-toggle="collapse" href={"#collapseExample"+i} aria-expanded="false" aria-controls="collapseExample">
@@ -31,6 +28,34 @@ export default class Browse extends React.Component {
               </a>
             </div>
             </p>
+            
+            <div class="col-lg-6">
+              <a href={"#myModal"+i} role="button" class="btn btn-secondary" data-toggle="modal">Contact Me</a>
+              <br/>
+            </div>
+            <div id={"myModal"+i} class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Hey!</h3>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action={"http://formspree.io/"+this.props[i].email}>
+                      <div class="form-group"><label>Email</label><input type="email" class="form-control required" 
+                      placeholder="Your email" name="email" data-placement="top" data-trigger="manual" type="text"/></div>
+                      <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." 
+                      data-placement="top" name="message" data-trigger="manual"></textarea></div>
+                      <div class="form-group"><button type="submit" class="btn btn-success pull-right">Send It!</button></div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="collapse" id={"collapseExample"+i}>
               <div class="card card-block">
                 <strong>Courses Taken</strong>: {this.props[i].coursesTaken}<br/>
@@ -58,9 +83,6 @@ export default class Browse extends React.Component {
                 <ProfileCard firstName={this.props[i].firstName} lastName={this.props[i].lastName}
             email={this.props[i].email} major={this.props[i].major} year={this.props[i].year} schools={this.props[i].schools}
             hometown={this.props[i].hometown}/>
-            <div class="col-lg-6">
-              <a href={"mailto:"+this.props[i].email} class="btn btn-secondary btn-lg"><i class="fa fa-google-plus fa-fw"></i>Contact Me</a>
-            </div>
             <p>
             <div class="col-lg-6">
               <a class="btn btn-secondary" data-toggle="collapse" href={"#collapseExample"+i} aria-expanded="false" aria-controls="collapseExample">
@@ -68,6 +90,32 @@ export default class Browse extends React.Component {
               </a>
             </div>
             </p>
+            <div class="col-lg-6">
+              <a href={"#myModal"+i} role="button" class="btn btn-secondary btn-lg" data-toggle="modal">Contact Me</a>
+              <br/>
+            </div>
+            <div id={"myModal"+i} class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Hey!</h3>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action={"http://formspree.io/"+this.props[i].email}>
+                      <div class="form-group"><label>Email</label><input type="email" class="form-control required" 
+                      placeholder="Your email" name="email" data-placement="top" data-trigger="manual" type="text"/></div>
+                      <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." 
+                      data-placement="top" name="message" data-trigger="manual"></textarea></div>
+                      <div class="form-group"><button type="submit" class="btn btn-success pull-right">Send It!</button></div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="collapse" id={"collapseExample"+i}>
               <div class="card card-block">
                 <strong>Courses Taken: </strong> {this.props[i].coursesTaken}<br/>
@@ -83,9 +131,6 @@ export default class Browse extends React.Component {
                 <ProfileCard firstName={this.props[i+1].firstName} lastName={this.props[i+1].lastName}
             email={this.props[i+1].email} major={this.props[i+1].major} year={this.props[i+1].year} schools={this.props[i+1].schools}
             hometown={this.props[i+1].hometown}/>
-            <div class="col-lg-6">
-              <a href={"mailto:"+this.props[i].email} class="btn btn-secondary btn-lg"><i class="fa fa-google-plus fa-fw"></i>Contact Me</a>
-            </div>
             <p>
             <div class="col-lg-6">
               <a class="btn btn-secondary" data-toggle="collapse" href={"#collapseExample"+(i+1)} aria-expanded="false" aria-controls="collapseExample">
@@ -93,6 +138,32 @@ export default class Browse extends React.Component {
               </a>
             </div>
             </p>
+            <div class="col-lg-6">
+              <a href={"#myModal"+(i+1)} role="button" class="btn btn-secondary btn-lg" data-toggle="modal">Contact Me</a>
+              <br/>
+            </div>
+            <div id={"myModal"+(i+1)} class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Hey!</h3>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action={"http://formspree.io/"+this.props[i+1].email}>
+                      <div class="form-group"><label>Email</label><input type="email" class="form-control required" 
+                      placeholder="Your email" name="email" data-placement="top" data-trigger="manual" type="text"/></div>
+                      <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." 
+                      data-placement="top" name="message" data-trigger="manual"></textarea></div>
+                      <div class="form-group"><button type="submit" class="btn btn-success pull-right">Send It!</button></div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="collapse" id={"collapseExample"+(i+1)}>
               <div class="card card-block">
                 <strong>Courses Taken</strong>: {this.props[i+1].coursesTaken}<br/>
@@ -242,4 +313,6 @@ export default class Browse extends React.Component {
    )
   }
  }
+
+
 
