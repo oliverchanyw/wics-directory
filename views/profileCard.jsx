@@ -94,24 +94,22 @@ export default class ProfileCard extends React.Component {
         #description {
           margin-top: -20px;
         }
-        .col-lg-6 {
-          text-align: center;
+        .name {
+          font-size: 30px;
         }
        `}
      <div>
-    <div class="col-lg-12">
-      <strong>Name</strong>: {this.props.firstName} {this.props.lastName}<br/>
+     <div class="col-lg-12">
+      <div class="name"><strong>{this.props.firstName} {this.props.lastName}</strong></div><br/>
       <strong>Contact</strong>: {this.props.email}<br/>
       <strong>Major</strong>: {this.props.major}<br/>
       <strong>School</strong>: {this.props.schools}<br/>
       <strong>Year</strong>: {this.props.year}<br/>
       <strong>Hometown</strong>: {this.props.hometown}<br/>
-      <strong>Courses Taken</strong>: {this.props.coursesTaken}<br/>
-      <strong>Courses Curr</strong>: {this.props.coursesCurr}<br/>
-      <strong>Involvement on Campus</strong>: {this.props.involve}<br/>
-      <strong>Interests</strong>: {this.props.interests}<br/>
     </div>
-    <br/>
+    <br/>  
+  
+
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"></script>
     </div></Style>
