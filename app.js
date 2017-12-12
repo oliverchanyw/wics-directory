@@ -109,8 +109,12 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/authenticate' }),
   function(req, res) {
-    session.isAuthenticated = true;
-    res.redirect('/create');
+    if (req.user.emails[0].value.substring(req.user.emails[0].value.length - 9).toLowerCase() != 'upenn.edu') {
+      res.redirect('/');
+    } else {
+      session.isAuthenticated = true;
+      res.redirect('/create');
+    }
 });
 
 app.get('/authenticate', function (req, res) {
