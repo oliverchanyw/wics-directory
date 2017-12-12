@@ -3,9 +3,9 @@ import AlertBox from './alert.jsx';
 
 export default class Form extends React.Component {
   constructor(props) {
-   super(props);
-   this.register = this.register.bind(this);
-   this.state = {
+    super(props);
+    this.register = this.register.bind(this);
+    this.state = {
     showAlert: false,
     }
   };
